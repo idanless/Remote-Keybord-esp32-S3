@@ -4,7 +4,7 @@ This is a CircuitPython project that turns a Wi-Fi-enabled microcontroller (like
 
 When plugged into a computer, the board acts as a standard USB HID device. At the same time, it hosts a local web server. You can open this web interface on your phone to send text, use a virtual trackpad, and trigger custom key combinations. It also includes support for an ST7735 LCD screen that displays the network status in a cyberpunk/terminal style.
 
-## Screenshots
+
 
 ## Screenshots
 
