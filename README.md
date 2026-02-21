@@ -1,4 +1,4 @@
-# Wi-Fi Remote Keyboard & Mouse (CircuitPython)
+# Wi-Fi Remote Keyboard & Mouse (CircuitPython + LILYGO T DONGLE S3 LCD)
 
 This is a CircuitPython project that turns a Wi-Fi-enabled microcontroller (like a Raspberry Pi Pico W or ESP32-S3) into a wireless USB keyboard and trackpad. 
 
