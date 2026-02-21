@@ -170,7 +170,7 @@ html = """
 </style>
 </head>
 <body>
-    <h2 style="margin-top: 5px;">Idan LESS Control</h2>
+    <h2 style="margin-top: 5px;">Remote Control</h2>
     
     <details>
         <summary>External Wi-Fi Connection</summary>
