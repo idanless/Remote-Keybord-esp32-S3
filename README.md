@@ -7,7 +7,7 @@ When plugged into a computer, the board acts as a standard USB HID device. At th
 ## Screenshots
 
 <div align="center">
-  <img src="" alt="Mobile Web Interface" width="45%">
+  ![Screenshot](UIWEB.png)
   &nbsp;
   <img src="path/to/lcd_display.png" alt="LCD Cyberpunk Display" width="45%">
 </div>
