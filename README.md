@@ -9,9 +9,9 @@ When plugged into a computer, the board acts as a standard USB HID device. At th
 ## Screenshots
 
 <div align="center">
-  <img src="UIWEB.png" alt="Mobile Web Interface" width="80%">
+  <img src="UIWEB.png" alt="Mobile Web Interface" width="100%">
   &nbsp;
-  <img src="LCD.jpeg" alt="LCD " width="80%">
+  <img src="LCD.jpeg" alt="LCD " width="40%">
 </div>
 
 ## Features
