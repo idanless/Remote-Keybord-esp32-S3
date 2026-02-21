@@ -1,8 +1,16 @@
-# Wi-Fi Remote Keyboard & Mouse (CircuitPython + LILYGO T DONGLE S3 LCD)
+# Wi-Fi Remote Keyboard & Mouse (CircuitPython + LILYGO T-Dongle-S3)
 
 This is a CircuitPython project that turns a Wi-Fi-enabled microcontroller (like a Raspberry Pi Pico W or ESP32-S3) into a wireless USB keyboard and trackpad. 
 
 When plugged into a computer, the board acts as a standard USB HID device. At the same time, it hosts a local web server. You can open this web interface on your phone to send text, use a virtual trackpad, and trigger custom key combinations. It also includes support for an ST7735 LCD screen that displays the network status in a cyberpunk/terminal style.
+
+## Screenshots
+
+<div align="center">
+  <img src="path/to/web_interface.png" alt="Mobile Web Interface" width="45%">
+  &nbsp;
+  <img src="path/to/lcd_display.png" alt="LCD Cyberpunk Display" width="45%">
+</div>
 
 ## Features
 
@@ -13,9 +21,9 @@ When plugged into a computer, the board acts as a standard USB HID device. At th
 
 ## Hardware Requirements
 
-- A microcontroller with Wi-Fi and native USB HID support (e.g., Raspberry Pi Pico W).
+- A microcontroller with Wi-Fi and native USB HID support (e.g., LILYGO T-Dongle-S3).
 - ST7735R TFT Display (160x80).
-- USB data cable.
+- USB data cable (if not using a direct dongle).
 
 ## Dependencies
 
@@ -38,7 +46,7 @@ Make sure you have a recent version of CircuitPython installed on your board. Yo
 
 ## Pin Configuration (Display)
 
-The script assumes specific GPIO pins for the SPI display. You might need to change these in `code.py` depending on the exact board you are using. Current configuration:
+The script assumes specific GPIO pins for the SPI display. You might need to change these in `code.py` depending on the exact board you are using. Current configuration (for LILYGO T-Dongle-S3):
 
 - **CLK (Clock)**: GPIO5
 - **MOSI**: GPIO3
