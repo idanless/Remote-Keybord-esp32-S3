@@ -45,6 +45,7 @@ display = ST7735R(display_bus, width=160, height=80, rotation=90, bgr=True, cols
 
 main_group = displayio.Group()
 
+# רקע שחור מלא
 bg_bitmap = displayio.Bitmap(160, 80, 1)
 bg_palette = displayio.Palette(1)
 bg_palette[0] = 0x000000  # black
@@ -81,11 +82,9 @@ display.root_group = main_group
 
 def update_matrix_ui(line1, line2, status="OK", show_cursor=True):
     try:
-        
         lbl_line1.text = f"[*] {line1}"
         lbl_line2.text = f"[>] {line2}"
         
-       
         if status == "WIFI":
             lbl_title.color = CYAN_ACCENT      
         elif status == "AP":
@@ -93,7 +92,6 @@ def update_matrix_ui(line1, line2, status="OK", show_cursor=True):
         else:
             lbl_title.color = MATRIX_GREEN
             
-       
         lbl_cursor.text = "_" if show_cursor else " "
     except:
         pass
@@ -197,9 +195,10 @@ html = """
                 <button onclick="sendText()" class="btn">Send Text</button>
                 <button onclick="clearText()" class="btn btn-gray">Clear</button>
             </div>
-            <div class="flex-row" style="margin-top: 0;">
-                <button onclick="vKey('ENTER')" class="btn btn-gray" style="background: #333;">Enter</button>
-                <button onclick="vKey('SPACE')" class="btn btn-gray" style="background: #333;">Space</button>
+            <div class="flex-row" style="margin-top: 0; gap: 5px;">
+                <button onclick="vKey('ENTER')" class="btn btn-gray" style="background: #333; font-size: 14px;">Enter</button>
+                <button onclick="vKey('SPACE')" class="btn btn-gray" style="background: #333; font-size: 14px;">Space</button>
+                <button onclick="vKey('BACK')" class="btn btn-gray" style="background: #333; font-size: 14px;">Backspace</button>
             </div>
             
             <hr style="border-color: #0f0; margin: 15px 0;">
@@ -353,7 +352,6 @@ def handle_wifi(request: Request):
     p = request.query_params.get("p", "")
     if s:
         try:
-           
             if p:
                 wifi.radio.connect(s, p)
             else:
@@ -376,6 +374,19 @@ def send_text(request: Request):
         else: kbd.send(Keycode.SPACE)
     return Response(request, "OK", content_type="text/plain")
 
+
+@server.route("/mouse", GET)
+def handle_mouse(request: Request):
+    params = request.query_params
+    if "x" in params and "y" in params:
+        try: mouse_dev.move(x=max(min(int(params["x"]), 127), -127), y=max(min(int(params["y"]), 127), -127))
+        except: pass
+    if "click" in params:
+        btn = params["click"]
+        if btn == "left": mouse_dev.click(Mouse.LEFT_BUTTON)
+        elif btn == "right": mouse_dev.click(Mouse.RIGHT_BUTTON)
+    return Response(request, "OK", content_type="text/plain")
+
 @server.route("/key", GET)
 def handle_vkey(request: Request):
     k = request.query_params.get("k", "")
@@ -385,7 +396,7 @@ def handle_vkey(request: Request):
         "UP": Keycode.UP_ARROW, "DOWN": Keycode.DOWN_ARROW, "LEFT": Keycode.LEFT_ARROW, "RIGHT": Keycode.RIGHT_ARROW,
         "F1": Keycode.F1, "F2": Keycode.F2, "F3": Keycode.F3, "F4": Keycode.F4, "F5": Keycode.F5, "F6": Keycode.F6, 
         "F7": Keycode.F7, "F8": Keycode.F8, "F9": Keycode.F9, "F10": Keycode.F10, "F11": Keycode.F11, "F12": Keycode.F12,
-        "SPACE": Keycode.SPACE # הוספתי תמיכה בפקודת רווח כאן
+        "SPACE": Keycode.SPACE 
     }
     if k in vkey_map: kbd.send(vkey_map[k])
     return Response(request, "OK", content_type="text/plain")
