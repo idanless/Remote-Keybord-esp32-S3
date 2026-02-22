@@ -45,7 +45,6 @@ display = ST7735R(display_bus, width=160, height=80, rotation=90, bgr=True, cols
 
 main_group = displayio.Group()
 
-# רקע שחור מלא
 bg_bitmap = displayio.Bitmap(160, 80, 1)
 bg_palette = displayio.Palette(1)
 bg_palette[0] = 0x000000  # black
@@ -99,7 +98,7 @@ def update_matrix_ui(line1, line2, status="OK", show_cursor=True):
     except:
         pass
 
-# --- 3. הגדרות WiFi ומילונים ---
+
 WIFI_SSID = "Idan-Remote-KBD"
 WIFI_PASS = "12345678"
 
